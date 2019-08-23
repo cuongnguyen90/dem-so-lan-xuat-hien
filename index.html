@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+</head>
+<body>
+<script>
+
+        let arr = new Array();
+        for (i = 0;i<20;i++){
+            arr.push(Math.floor(Math.random()*20));
+        }
+        let val = parseInt(prompt("Enter a value to count: "));
+        let retVal = count(arr,val);
+        document.write(retVal);
+
+
+
+        function count(arr,data) {
+            let count = 0 ;
+            let position = binSearch(arr,data);
+            //console.log(position);
+            if (position > -1) {
+                ++count;
+                for (var i = position-1; i > 0; --i) {
+                    if (arr[i] == data) {
+                        ++count;
+                    }
+                    else {
+                        break;
+                    }
+                }
+
+                for (var i = position+1; i < arr.length; ++i) {
+                    if (arr[i] == data) {
+                        ++count;
+                    }
+                    else {
+                        break;
+                    }
+                }
+            } //end if
+            return count;
+        }
+
+
+        function binSearch(arr,num) {
+            for (i = 0 ;i < arr.length ;i++){
+                if (arr[i] == num){
+                    return i;
+                }
+            }
+            return -1;
+        }
+</script>
+</body>
+</html>
